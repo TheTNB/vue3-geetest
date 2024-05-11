@@ -1,0 +1,35 @@
+{
+  "name": "vue-geetest",
+  "version": "1.0.0",
+  "description": "Geetest V4 for Vue 3",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "dist/**/*",
+    "/README.md",
+    "/LICENSE"
+  ],
+  "bugs": {
+    "url": "https://github.com/TheTNB/vue-geetest/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheTNB/vue-geetest"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "geetest"
+  ],
+  "author": "TheTNB",
+  "license": "WTFPL"
+}
