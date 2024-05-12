@@ -1,9 +1,9 @@
-# Vue Geetest
+# Vue3 Geetest
 
 ## 安装
 
 使用npm安装：
 
 ```bash
-npm install vue-geetest
+npm install vue3-geetest
 ```

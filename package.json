@@ -1,5 +1,5 @@
 {
-  "name": "vue-geetest",
+  "name": "vue3-geetest",
   "version": "1.0.0",
   "description": "Geetest V4 for Vue 3",
   "main": "dist/index.js",
@@ -13,11 +13,11 @@
     "/LICENSE"
   ],
   "bugs": {
-    "url": "https://github.com/TheTNB/vue-geetest/issues"
+    "url": "https://github.com/TheTNB/vue3-geetest/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/TheTNB/vue-geetest"
+    "url": "https://github.com/TheTNB/vue3-geetest"
   },
   "peerDependencies": {
     "vue": "^3.4.0"
