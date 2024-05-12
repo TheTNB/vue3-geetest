@@ -1,11 +1,12 @@
 {
   "name": "vue3-geetest",
-  "version": "1.0.1",
+  "type": "module",
+  "version": "1.0.2",
   "description": "Geetest V4 for Vue 3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "vite build -c ./vite.config.ts"
   },
   "files": [
     "dist/**/*",
@@ -31,5 +32,10 @@
     "geetest"
   ],
   "author": "TheTNB",
-  "license": "WTFPL"
+  "license": "WTFPL",
+  "dependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.11",
+    "vite-plugin-dts": "^3.9.1"
+  }
 }
