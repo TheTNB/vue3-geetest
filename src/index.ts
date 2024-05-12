@@ -1,4 +1,4 @@
-import { App } from 'vue';
+import {App} from 'vue';
 import GeetestCaptcha from './GeetestCaptcha.vue';
 import {CaptchaConfig} from "@/types/types";
 
@@ -13,7 +13,7 @@ function loadGeetestScript(callback: () => void) {
     document.head.appendChild(script);
 }
 
-export default {
+const Geetest = {
     install(app: App, options?: CaptchaConfig) {
         loadGeetestScript(() => {
             app.component('GeetestCaptcha', GeetestCaptcha);
@@ -22,6 +22,7 @@ export default {
             }
         });
     }
-}
+};
 
-export { GeetestCaptcha };
+export default Geetest;
+export {GeetestCaptcha};

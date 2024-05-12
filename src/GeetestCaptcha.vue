@@ -2,7 +2,7 @@
   <div :id="captchaId"></div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import {inject, onMounted, ref} from 'vue';
 import {CaptchaConfig, Props} from '@/types/types';
 
@@ -13,20 +13,20 @@ const captchaId = ref(`captcha-${Date.now()}`)
 
 // 合并配置
 const mergedConfig = {
-    ...config,
-    ...props.config
+  ...config,
+  ...props.config
 };
 
 onMounted(() => {
-    const initCaptcha = (captchaObj: any) => {
-      captchaObj.appendTo(`#${captchaId.value}`);
-        emit('initialized', captchaObj);
-    };
+  const initCaptcha = (captchaObj: any) => {
+    captchaObj.appendTo(`#${captchaId.value}`);
+    emit('initialized', captchaObj);
+  };
 
-    if (window.initGeetest4) {
-        window.initGeetest4(mergedConfig, initCaptcha);
-    } else {
-        console.error('Geetest library not loaded');
-    }
+  if (window.initGeetest4) {
+    window.initGeetest4(mergedConfig, initCaptcha);
+  } else {
+    console.error('Geetest library not loaded');
+  }
 });
 </script>

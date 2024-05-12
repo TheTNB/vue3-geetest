@@ -6,16 +6,16 @@ const g = ["id"], h = /* @__PURE__ */ d({
   },
   emits: ["initialized"],
   setup(t, { emit: e }) {
-    const c = l("geetest-config"), s = t, a = e, o = p(`captcha-${Date.now()}`), r = {
+    const c = l("geetest-config"), s = t, a = e, n = p(`captcha-${Date.now()}`), r = {
       ...c,
       ...s.config
     };
     return m(() => {
-      const i = (n) => {
-        n.appendTo(`#${o.value}`), a("initialized", n);
+      const i = (o) => {
+        o.appendTo(`#${n.value}`), a("initialized", o);
       };
       window.initGeetest4 ? window.initGeetest4(r, i) : console.error("Geetest library not loaded");
-    }), (i, n) => (f(), u("div", { id: o.value }, null, 8, g));
+    }), (i, o) => (f(), u("div", { id: n.value }, null, 8, g));
   }
 });
 function G(t) {
