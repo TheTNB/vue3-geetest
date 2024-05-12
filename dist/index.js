@@ -12,8 +12,10 @@ function loadGeetestScript(callback) {
 export default {
     install: function (app, options) {
         loadGeetestScript(function () {
-            // 在库加载后进行插件的其他初始化
             app.component('GeetestCaptcha', GeetestCaptcha);
+            if (options) {
+                app.provide('geetestConfig', options);
+            }
         });
     }
 };
