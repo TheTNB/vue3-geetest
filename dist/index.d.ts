@@ -7,3 +7,4 @@ declare const Geetest: {
 };
 export default Geetest;
 export { GeetestCaptcha };
+export type { CaptchaConfig };
