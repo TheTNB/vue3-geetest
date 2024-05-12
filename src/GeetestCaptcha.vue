@@ -6,7 +6,7 @@
 import {inject, onMounted, ref} from 'vue';
 import {CaptchaConfig, Props} from '@/types/types';
 
-const config = inject('geetestConfig') as CaptchaConfig;
+const config = inject<CaptchaConfig>('geetest-config');
 const props = defineProps<Props>()
 const emit = defineEmits(['initialized']);
 const captchaId = ref(`captcha-${Date.now()}`)
