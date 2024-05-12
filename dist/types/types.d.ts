@@ -1,15 +1,15 @@
 export interface CaptchaConfig {
-    captchaId: string;
-    product?: "float" | "popup" | "bind";
+    captchaId?: string;
+    product?: 'float' | 'popup' | 'bind';
     nativeButton?: {
         width: string;
         height: string;
     };
     rem?: number;
-    language?: string;
-    protocol?: "http://" | "https://";
+    language?: 'zho' | 'eng' | 'zho-tw' | 'zho-hk' | 'udm' | 'jpn' | 'ind' | 'kor' | 'rus' | 'ara' | 'spa' | 'pon' | 'por' | 'fra' | 'deu';
+    protocol?: 'http://' | 'https://';
     timeout?: number;
-    hideBar?: ("close" | "refresh")[];
+    hideBar?: ('close' | 'refresh')[];
     mask?: {
         outside: boolean;
         bgColor: string;
