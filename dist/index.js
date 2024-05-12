@@ -24,7 +24,7 @@ function G(t) {
     console.error("Failed to load the Geetest JavaScript library.");
   }, document.head.appendChild(e);
 }
-const v = {
+const C = {
   install(t, e) {
     G(() => {
       t.component("GeetestCaptcha", h), e && t.provide("geetest-config", e);
@@ -32,5 +32,6 @@ const v = {
   }
 };
 export {
-  v as default
+  h as GeetestCaptcha,
+  C as default
 };

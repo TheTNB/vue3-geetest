@@ -25,3 +25,4 @@ const Geetest = {
 };
 
 export default Geetest;
+export {GeetestCaptcha};
