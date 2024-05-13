@@ -1,7 +1,7 @@
 {
   "name": "vue3-geetest",
   "type": "module",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Geetest V4 for Vue 3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

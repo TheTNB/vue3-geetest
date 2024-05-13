@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import {inject, onMounted, ref, watch, nextTick} from 'vue';
+import {inject, onMounted, ref} from 'vue';
 import {CaptchaConfig, Props} from '@/types/types';
 
 const config = inject<CaptchaConfig>('geetest-config');

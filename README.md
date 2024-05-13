@@ -13,7 +13,7 @@ npm install vue3-geetest
 首先在 main.ts 中引入并注册组件：
 
 ```ts
-import { Geetest } from 'vue3-geetest'
+import {Geetest} from 'vue3-geetest'
 
 app.use(Geetest, {
     captchaId: 'xxx'
@@ -28,8 +28,8 @@ app.use(Geetest, {
 </template>
 
 <script setup lang="ts">
-import { GeetestCaptcha } from 'vue3-geetest'
-import type { CaptchaConfig } from 'vue3-geetest'
+import {GeetestCaptcha} from 'vue3-geetest'
+import type {CaptchaConfig} from 'vue3-geetest'
 
 const config: CaptchaConfig = {
   product: 'popup',
