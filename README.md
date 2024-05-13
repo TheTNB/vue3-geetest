@@ -2,7 +2,7 @@
 
 ## 安装
 
-使用npm安装：
+使用 npm 安装：
 
 ```bash
 npm install vue3-geetest
@@ -24,7 +24,7 @@ app.use(Geetest, {
 
 ```vue
 <template>
-  <GeetestCaptcha :config="config" @initialized="getHandler" />
+  <GeetestCaptcha :config="config" @initialized="getCaptcha" />
 </template>
 
 <script setup lang="ts">
@@ -39,8 +39,8 @@ const config: CaptchaConfig = {
   }
 }
 
-const getHandler = (captchaObj: any) => {
-  captchaObj
+const getCaptcha = (instance: any) => {
+  instance
     .onReady(function () {
       console.log('ready')
     })
@@ -60,4 +60,4 @@ const getHandler = (captchaObj: any) => {
 </script>
 ```
 
-captchaObj 为极验实例对象，具体 API 方法可参考[极验文档](https://docs.geetest.com/gt4/apirefer/api/web/#appendTo-position)
+instance 为极验实例对象，具体 API 方法可参考[极验文档](https://docs.geetest.com/gt4/apirefer/api/web/#appendTo-position)
