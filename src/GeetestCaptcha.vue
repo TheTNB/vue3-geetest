@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import {inject, onMounted, ref, watch, nextTick, onUnmounted} from 'vue';
+import { inject, onMounted, ref, watch, nextTick } from 'vue';
 import { CaptchaConfig, Props } from '@/types/types';
 
 const config = inject<CaptchaConfig>('geetest-config');
@@ -11,7 +11,6 @@ const props = defineProps<Props>()
 const emit = defineEmits(['initialized']);
 const captchaId = ref(`captcha-${Date.now()}`);
 const gt4Loaded = ref(false);
-let instance: any;
 
 // 合并配置
 const mergedConfig = {
@@ -22,7 +21,8 @@ const mergedConfig = {
 const loadGt4 = () => {
   const el = document.getElementById('geetest');
   if (el) {
-    el.remove();
+    gt4Loaded.value = true;
+    return;
   }
 
   const script = document.createElement('script');
@@ -38,11 +38,13 @@ const loadGt4 = () => {
 }
 
 const initGeetest = () => {
+  console.log(`Initializing Geetest: ${captchaId.value}`)
+  console.log(`gt4Loaded: ${gt4Loaded.value}`)
   if (window.initGeetest4 && gt4Loaded.value) {
     window.initGeetest4(mergedConfig, (captchaObj: any) => {
-      instance = captchaObj;
-      instance.appendTo(`#${captchaId.value}`);
-      emit('initialized', instance);
+      console.log(`Captcha initialized: ${captchaId.value}`)
+      captchaObj.appendTo(`#${captchaId.value}`);
+      emit('initialized', captchaObj);
     });
   } else {
     console.error('Geetest not loaded or initGeetest4 is not available');
@@ -58,13 +60,5 @@ onMounted(() => {
       });
     }
   });
-});
-
-onUnmounted(() => {
-  const el = document.getElementById('geetest');
-  if (el) {
-    el.remove();
-  }
-  instance?.destroy();
 });
 </script>

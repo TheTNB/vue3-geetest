@@ -1,47 +1,44 @@
-import { defineComponent as g, inject as u, ref as a, onMounted as h, watch as G, nextTick as v, onUnmounted as _, openBlock as w, createElementBlock as C } from "vue";
-const B = ["id"], E = /* @__PURE__ */ g({
+import { defineComponent as u, inject as m, ref as c, onMounted as f, watch as v, nextTick as G, openBlock as h, createElementBlock as _ } from "vue";
+const C = ["id"], w = /* @__PURE__ */ u({
   __name: "GeetestCaptcha",
   props: {
     config: {}
   },
   emits: ["initialized"],
   setup(n, { emit: i }) {
-    const d = u("geetest-config"), l = n, r = i, c = a(`captcha-${Date.now()}`), s = a(!1);
-    let t;
-    const m = {
-      ...d,
+    const a = m("geetest-config"), l = n, d = i, s = c(`captcha-${Date.now()}`), o = c(!1), r = {
+      ...a,
       ...l.config
-    }, p = () => {
-      const e = document.getElementById("geetest");
-      e && e.remove();
-      const o = document.createElement("script");
-      o.id = "geetest", o.src = "https://static.geetest.com/v4/gt4.js", o.onload = () => {
-        s.value = !0;
-      }, o.onerror = () => {
+    }, g = () => {
+      if (document.getElementById("geetest")) {
+        o.value = !0;
+        return;
+      }
+      const t = document.createElement("script");
+      t.id = "geetest", t.src = "https://static.geetest.com/v4/gt4.js", t.onload = () => {
+        o.value = !0;
+      }, t.onerror = () => {
         console.error("Failed to load Geetest");
-      }, document.head.appendChild(o);
-    }, f = () => {
-      window.initGeetest4 && s.value ? window.initGeetest4(m, (e) => {
-        t = e, t.appendTo(`#${c.value}`), r("initialized", t);
+      }, document.head.appendChild(t);
+    }, p = () => {
+      console.log(`Initializing Geetest: ${s.value}`), console.log(`gt4Loaded: ${o.value}`), window.initGeetest4 && o.value ? window.initGeetest4(r, (e) => {
+        console.log(`Captcha initialized: ${s.value}`), e.appendTo(`#${s.value}`), d("initialized", e);
       }) : console.error("Geetest not loaded or initGeetest4 is not available");
     };
-    return h(() => {
-      p(), G(s, (e) => {
-        e && v(() => {
-          f();
+    return f(() => {
+      g(), v(o, (e) => {
+        e && G(() => {
+          p();
         });
       });
-    }), _(() => {
-      const e = document.getElementById("geetest");
-      e && e.remove(), t == null || t.destroy();
-    }), (e, o) => (w(), C("div", { id: c.value }, null, 8, B));
+    }), (e, t) => (h(), _("div", { id: s.value }, null, 8, C));
   }
-}), x = {
+}), z = {
   install(n, i) {
-    n.component("GeetestCaptcha", E), i && n.provide("geetest-config", i);
+    n.component("GeetestCaptcha", w), i && n.provide("geetest-config", i);
   }
 };
 export {
-  E as GeetestCaptcha,
-  x as default
+  w as GeetestCaptcha,
+  z as default
 };
