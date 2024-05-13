@@ -26,7 +26,7 @@ onMounted(() => {
   if (window.initGeetest4) {
     window.initGeetest4(mergedConfig, initCaptcha);
   } else {
-    console.error('Geetest library not loaded');
+    console.error('Geetest not loaded');
   }
 });
 </script>

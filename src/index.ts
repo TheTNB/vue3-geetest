@@ -4,11 +4,11 @@ import {CaptchaConfig} from "@/types/types";
 
 function loadGeetestScript(callback: () => void) {
     const script = document.createElement('script');
+    script.id = 'geetest';
     script.src = 'https://static.geetest.com/v4/gt4.js';
-    script.async = true;
     script.onload = callback;
     script.onerror = () => {
-        console.error('Failed to load the Geetest JavaScript library.');
+        console.error('Failed to load Geetest.');
     };
     document.head.appendChild(script);
 }
