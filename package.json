@@ -1,7 +1,7 @@
 {
   "name": "vue3-geetest",
   "type": "module",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Geetest V4 for Vue 3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,7 +24,10 @@
     "vue": "^3.4.0"
   },
   "devDependencies": {
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.11",
+    "vite-plugin-dts": "^3.9.1"
   },
   "keywords": [
     "vue",
@@ -32,10 +35,5 @@
     "geetest"
   ],
   "author": "TheTNB",
-  "license": "WTFPL",
-  "dependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.2.11",
-    "vite-plugin-dts": "^3.9.1"
-  }
+  "license": "WTFPL"
 }

@@ -5,6 +5,5 @@ import { CaptchaConfig } from './types/types';
 declare const Geetest: {
     install(app: App, options?: CaptchaConfig): void;
 };
-export default Geetest;
-export { GeetestCaptcha };
+export { Geetest, GeetestCaptcha };
 export type { CaptchaConfig };

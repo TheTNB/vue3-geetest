@@ -11,6 +11,5 @@ const Geetest = {
     }
 };
 
-export default Geetest;
-export {GeetestCaptcha};
+export {Geetest, GeetestCaptcha};
 export type {CaptchaConfig};

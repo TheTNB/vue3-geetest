@@ -6,9 +6,9 @@ const w = ["id"], C = /* @__PURE__ */ u({
   },
   emits: ["initialized"],
   setup(o, { emit: n }) {
-    const a = f("geetest-config"), d = o, l = n, s = c(`captcha-${Date.now()}`), i = c(!1), r = {
+    const a = f("geetest-config"), r = o, d = n, s = c(`captcha-${Date.now()}`), i = c(!1), l = {
       ...a,
-      ...d.config
+      ...r.config
     }, p = () => {
       if (document.getElementById("geetest")) {
         i.value = !0;
@@ -21,8 +21,8 @@ const w = ["id"], C = /* @__PURE__ */ u({
         console.error("Failed to load Geetest");
       }, document.head.appendChild(t);
     }, m = () => {
-      window.initGeetest4 && i.value ? window.initGeetest4(r, (e) => {
-        e.appendTo(`#${s.value}`), l("initialized", e);
+      window.initGeetest4 && i.value ? window.initGeetest4(l, (e) => {
+        e.appendTo(`#${s.value}`), d("initialized", e);
       }) : console.error("Geetest not loaded or initGeetest4 is not available");
     };
     return g(() => {
@@ -39,6 +39,6 @@ const w = ["id"], C = /* @__PURE__ */ u({
   }
 };
 export {
-  C as GeetestCaptcha,
-  x as default
+  x as Geetest,
+  C as GeetestCaptcha
 };
