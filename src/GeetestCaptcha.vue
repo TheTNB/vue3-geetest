@@ -38,8 +38,6 @@ const loadGt4 = () => {
 }
 
 const initGeetest = () => {
-  console.log(`Initializing Geetest: ${captchaId.value}`)
-  console.log(`gt4Loaded: ${gt4Loaded.value}`)
   if (window.initGeetest4 && gt4Loaded.value) {
     window.initGeetest4(mergedConfig, (captchaObj: any) => {
       console.log(`Captcha initialized: ${captchaId.value}`)
@@ -52,16 +50,14 @@ const initGeetest = () => {
 }
 
 onMounted(() => {
-  loadGt4();
-  console.log('GeetestCaptcha mounted');
-  console.log(`gt4Loaded: ${gt4Loaded.value}`);
+  console.log(`gt4Loaded: ${gt4Loaded.value}`)
   watch(gt4Loaded, (loaded) => {
-    console.log(`gt4Loaded changed: ${loaded}`)
     if (loaded) {
       nextTick(() => {
         initGeetest();
       });
     }
   });
+  loadGt4();
 });
 </script>
