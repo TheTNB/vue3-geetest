@@ -1,44 +1,40 @@
-import { defineComponent as u, inject as f, ref as c, onMounted as g, watch as G, nextTick as h, openBlock as v, createElementBlock as _ } from "vue";
-const w = ["id"], C = /* @__PURE__ */ u({
+import { defineComponent as p, inject as m, ref as g, onMounted as f, openBlock as u, createElementBlock as G } from "vue";
+const h = ["id"], _ = /* @__PURE__ */ p({
   __name: "GeetestCaptcha",
   props: {
     config: {}
   },
   emits: ["initialized"],
-  setup(o, { emit: n }) {
-    const a = f("geetest-config"), r = o, d = n, s = c(`captcha-${Date.now()}`), i = c(!1), l = {
-      ...a,
-      ...r.config
-    }, p = () => {
+  setup(t, { emit: o }) {
+    const c = m("geetest-config"), a = t, r = o, i = g(`captcha-${Date.now()}`), d = {
+      ...c,
+      ...a.config
+    }, l = () => {
       if (document.getElementById("geetest")) {
-        i.value = !0;
+        s();
         return;
       }
-      const t = document.createElement("script");
-      t.id = "geetest", t.src = "https://static.geetest.com/v4/gt4.js", t.onload = () => {
-        i.value = !0;
-      }, t.onerror = () => {
+      const e = document.createElement("script");
+      e.id = "geetest", e.src = "https://static.geetest.com/v4/gt4.js", e.onload = () => {
+        s();
+      }, e.onerror = () => {
         console.error("Failed to load Geetest");
-      }, document.head.appendChild(t);
-    }, m = () => {
-      window.initGeetest4 && i.value ? window.initGeetest4(l, (e) => {
-        e.appendTo(`#${s.value}`), d("initialized", e);
+      }, document.head.appendChild(e);
+    }, s = () => {
+      window.initGeetest4 ? window.initGeetest4(d, (n) => {
+        n.appendTo(`#${i.value}`), r("initialized", n);
       }) : console.error("Geetest not loaded or initGeetest4 is not available");
     };
-    return g(() => {
-      G(i, (e) => {
-        e && h(() => {
-          m();
-        });
-      }), p();
-    }), (e, t) => (v(), _("div", { id: s.value }, null, 8, w));
+    return f(() => {
+      l();
+    }), (n, e) => (u(), G("div", { id: i.value }, null, 8, h));
   }
-}), x = {
-  install(o, n) {
-    o.component("GeetestCaptcha", C), n && o.provide("geetest-config", n);
+}), C = {
+  install(t, o) {
+    t.component("GeetestCaptcha", _), o && t.provide("geetest-config", o);
   }
 };
 export {
-  x as Geetest,
-  C as GeetestCaptcha
+  C as Geetest,
+  _ as GeetestCaptcha
 };

@@ -10,7 +10,6 @@ const config = inject<CaptchaConfig>('geetest-config');
 const props = defineProps<Props>()
 const emit = defineEmits(['initialized']);
 const captchaId = ref(`captcha-${Date.now()}`);
-const gt4Loaded = ref(false);
 
 // 合并配置
 const mergedConfig = {
@@ -21,7 +20,7 @@ const mergedConfig = {
 const loadGt4 = () => {
   const el = document.getElementById('geetest');
   if (el) {
-    gt4Loaded.value = true;
+    initGeetest();
     return;
   }
 
@@ -29,7 +28,7 @@ const loadGt4 = () => {
   script.id = 'geetest';
   script.src = 'https://static.geetest.com/v4/gt4.js';
   script.onload = () => {
-    gt4Loaded.value = true;
+    initGeetest();
   };
   script.onerror = () => {
     console.error('Failed to load Geetest');
@@ -38,7 +37,7 @@ const loadGt4 = () => {
 }
 
 const initGeetest = () => {
-  if (window.initGeetest4 && gt4Loaded.value) {
+  if (window.initGeetest4) {
     window.initGeetest4(mergedConfig, (captchaObj: any) => {
       captchaObj.appendTo(`#${captchaId.value}`);
       emit('initialized', captchaObj);
@@ -49,13 +48,6 @@ const initGeetest = () => {
 }
 
 onMounted(() => {
-  watch(gt4Loaded, (loaded) => {
-    if (loaded) {
-      nextTick(() => {
-        initGeetest();
-      });
-    }
-  });
   loadGt4();
 });
 </script>
