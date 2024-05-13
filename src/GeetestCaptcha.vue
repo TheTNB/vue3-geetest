@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, onMounted, ref, watch, nextTick } from 'vue';
-import { CaptchaConfig, Props } from '@/types/types';
+import {inject, onMounted, ref, watch, nextTick} from 'vue';
+import {CaptchaConfig, Props} from '@/types/types';
 
 const config = inject<CaptchaConfig>('geetest-config');
 const props = defineProps<Props>()
@@ -19,9 +19,14 @@ const mergedConfig = {
 
 const loadGt4 = () => {
   const el = document.getElementById('geetest');
-  if (el) {
+  // 已经加载过了，直接初始化
+  if (el && window.initGeetest4) {
     initGeetest();
     return;
+  }
+  // 加载过但是没有全局对象，尝试重新加载
+  if (el) {
+    el.remove();
   }
 
   const script = document.createElement('script');
