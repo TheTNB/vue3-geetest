@@ -22,8 +22,7 @@ const mergedConfig = {
 const loadGt4 = () => {
   const el = document.getElementById('geetest');
   if (el) {
-    gt4Loaded.value = true;
-    return;
+    el.remove();
   }
 
   const script = document.createElement('script');
@@ -60,7 +59,12 @@ onMounted(() => {
     }
   });
 });
+
 onUnmounted(() => {
+  const el = document.getElementById('geetest');
+  if (el) {
+    el.remove();
+  }
   instance?.destroy();
 });
 </script>
