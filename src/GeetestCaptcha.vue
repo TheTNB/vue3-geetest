@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, onMounted, ref, watch, nextTick } from 'vue';
+import {inject, onMounted, ref, watch, nextTick, onUnmounted} from 'vue';
 import { CaptchaConfig, Props } from '@/types/types';
 
 const config = inject<CaptchaConfig>('geetest-config');
@@ -11,6 +11,7 @@ const props = defineProps<Props>()
 const emit = defineEmits(['initialized']);
 const captchaId = ref(`captcha-${Date.now()}`);
 const gt4Loaded = ref(false);
+let instance: any;
 
 // 合并配置
 const mergedConfig = {
@@ -40,8 +41,9 @@ const loadGt4 = () => {
 const initGeetest = () => {
   if (window.initGeetest4 && gt4Loaded.value) {
     window.initGeetest4(mergedConfig, (captchaObj: any) => {
-      captchaObj.appendTo(`#${captchaId.value}`);
-      emit('initialized', captchaObj);
+      instance = captchaObj;
+      instance.appendTo(`#${captchaId.value}`);
+      emit('initialized', instance);
     });
   } else {
     console.error('Geetest not loaded or initGeetest4 is not available');
@@ -57,5 +59,8 @@ onMounted(() => {
       });
     }
   });
+});
+onUnmounted(() => {
+  instance?.destroy();
 });
 </script>
