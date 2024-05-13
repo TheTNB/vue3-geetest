@@ -53,7 +53,10 @@ const initGeetest = () => {
 
 onMounted(() => {
   loadGt4();
+  console.log('GeetestCaptcha mounted');
+  console.log(`gt4Loaded: ${gt4Loaded.value}`);
   watch(gt4Loaded, (loaded) => {
+    console.log(`gt4Loaded changed: ${loaded}`)
     if (loaded) {
       nextTick(() => {
         initGeetest();
